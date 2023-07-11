@@ -1,0 +1,172 @@
+@keyframes subHeadingAnimation {
+  from {
+    color: white;
+  }
+  to {
+    color: #c5ce25;
+  }
+}
+
+@keyframes headingAnimation {
+  from {
+    color: #383d13;
+  }
+  to {
+    color: whitesmoke;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: whitesmoke;
+  overflow-y: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.game {
+  display: flex;
+  background-image: url("images/snake2.jpg");
+  background-repeat: no-repeat;
+}
+
+.left-side,
+.right-side {
+  height: 100vh;
+}
+
+.left-side {
+  width: 70%;
+}
+
+.left-side h1 {
+  font-family: system-ui;
+  font-size: 130px;
+  padding-left: 3%;
+  color: #383d13;
+
+  animation-name: headingAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.left-side h3 {
+  font-family: system-ui;
+  position: absolute;
+  padding-left: 5%;
+  font-size: 2rem;
+
+  animation-name: subHeadingAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+.right-side {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 95%;
+  height: 90vh;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+  opacity: 0.85;
+}
+
+.one-player,
+.two-player,
+.three-player,
+.four-player {
+  height: 80px;
+  width: 80px;
+  border: 0px;
+  font-size: 40px;
+  color: white;
+}
+
+.one-player {
+  background-color: blue;
+  opacity: 0.75;
+}
+
+.two-player {
+  background-color: red;
+  opacity: 0.2;
+}
+
+.three-player {
+  background-color: purple;
+  opacity: 0.2;
+}
+
+.four-player {
+  background-color: green;
+  opacity: 0.2;
+}
+
+.one-player:hover,
+.two-player:hover,
+.three-player:hover,
+.four-player:hover {
+  cursor: pointer;
+}
+
+.players-info {
+  margin: 2.5rem;
+  height: 55%;
+}
+.players-info input {
+  width: 95%;
+  height: 55px;
+  margin: 10px 0px;
+  padding: 0px 5px;
+  border: 2px solid black;
+  color: black;
+  border-radius: 15px;
+  font-size: 18px;
+}
+
+#player-two-name {
+    display: none;
+}
+
+#player-three-name {
+    display: none;
+}
+
+#player-four-name {
+    display: none;
+}
+
+#game-start-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#start-btn {
+  width: 95%;
+  height: 50px;
+  color: black;
+  background-color: skyblue;
+  font-family: system-ui;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  border-radius: 20px;
+  border-color: #383d13;
+}
+
+#start-btn:hover {
+    color: white;
+    background-color: orange;
+    border-color: maroon;
+    cursor: pointer;
+}

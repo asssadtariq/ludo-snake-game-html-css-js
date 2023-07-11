@@ -1,0 +1,358 @@
+/* #b3ecab */
+@keyframes GoBackBtn_Animation {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes snakeMovement {
+  from {
+    /* transform: translate(0%, 50%); */
+    background-color: red;
+  }
+  to {
+    /* transform: translate(100%, 50%); */
+    background-color: green;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+}
+section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+
+#grid {
+  height: 100vh;
+  width: 70%;
+  background-color: #fff;
+  box-shadow: 3px 3px red, -1em 0 0.4em olive;
+}
+
+#players-info-dice {
+  height: 100vh;
+  width: 30%;
+  background-color: #d5d8ca;
+}
+
+#grid {
+  overflow-y: hidden;
+}
+
+.row {
+  width: 100%;
+  margin: 15px 0px;
+}
+
+.row ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5%;
+}
+
+.row ul li {
+  list-style: none;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 10px 0px;
+  color: whitesmoke;
+  background-color: black;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+#goback-btn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#goback-btn button {
+  width: 50%;
+  height: 40px;
+  margin: 20px 10px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: blueviolet;
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.players-info,
+.result {
+  height: 45%;
+}
+
+.players-info table,
+.result table {
+  width: 98%;
+  border: 2px solid black;
+  margin: 10px auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+}
+
+.players-info table caption,
+.result table caption {
+  margin: 20px 0px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.players-info table th,
+.result table th {
+  color: black;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  font-size: 1rem;
+  padding: 5px 5px;
+  text-transform: uppercase;
+}
+
+.players-info table td,
+.result table td {
+  padding: 8px 0px;
+  text-align: center;
+  border: 1px solid black;
+  font-weight: 500;
+}
+
+.dice {
+  padding: 10px;
+}
+
+.dice-rolling-area {
+  background-color: whitesmoke;
+  height: 12em;
+}
+
+.dice-btn {
+  height: 3em;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.dice-btn button {
+  text-transform: uppercase;
+  width: 100px;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  background-color: blueviolet;
+  border: 2px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#dice {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dice button {
+  height: 100px;
+  width: 100px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(41, 39, 39);
+  border-radius: 10px;
+  font-size: 4.5rem;
+  color: whitesmoke;
+}
+
+#snake-gifs {
+  position: absolute;
+  transform: translate(-100%, 50%);
+  display: none;
+}
+
+#lader-gifs {
+  position: absolute;
+  transform: translate(20%, 50%);
+  display: none;
+}
+
+#message {
+  position: absolute;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  width: 40%;
+  display: none;
+}
+
+.setting-modal {
+  position: absolute;
+  width: 50%;
+  height: max-content;
+  transform: translate(50%, 50%);
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+}
+
+.setting-modal h1 {
+  text-transform: uppercase;
+  height: 12%;
+}
+
+.difficulty-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  margin: 10px 0px;
+}
+
+.difficulty-btn button {
+  height: 45px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bolder;
+  border-radius: 18px;
+  background-color: transparent;
+  color: whitesmoke;
+  margin: 0px 20px;
+  text-transform: uppercase;
+}
+
+#easy-btn {
+  border-color: springgreen;
+}
+
+#normal-btn {
+  border-color: #bfbf22;
+}
+
+#hard-btn {
+  border-color: orange;
+}
+
+#superHard-btn {
+  border-color: red;
+}
+
+.difficulty-btn button:hover {
+  cursor: pointer;
+}
+
+/* #players-information {
+  height: 35%;
+  margin: 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#players-information input {
+  height: 100%;
+  width: 35%;
+  padding: 0px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  margin: 5px 0px;
+} */
+
+#modal-btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#modal-btns button {
+  margin: 0px 10px;
+  height: 35px;
+  width: 100px;
+  color: whitesmoke;
+  font-size: 1rem;
+  font-weight: bolder;
+  border-radius: 10px;
+}
+
+#save-btn {
+  background-color: blueviolet;
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+#close-btn {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.display-hidden {
+  display: none;
+}
+
+#player-images {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#pos1-gifs,
+#pos2-gifs,
+#pos3-gifs,
+#pos4-gifs {
+  width: 200px;
+  height: 200px;
+}
+
+#restart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#restart-btn button {
+  margin: 20px 10px;
+  height: 45px;
+  width: 110px;
+  color: black;
+  font-size: 1rem;
+  font-weight: bolder;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#game_over {
+  display: none;
+}

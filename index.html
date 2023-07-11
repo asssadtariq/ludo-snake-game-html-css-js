@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="utils.css" />
+    <title>Snaky | Ludo Snake Game</title>
+
+    <script>
+      var totalPlayersNumber = 1;
+
+      // function to save players data in localstorage, apply validations to data and redirect it to new page
+      function savePlayersInfo() {
+
+        // clearing local storage
+        localStorage.clear();
+
+        localStorage.setItem("game_level", 1);
+        var p1_name_ele = document.getElementById("player-one-name");
+        var p2_name_ele = document.getElementById("player-two-name");
+        var p3_name_ele = document.getElementById("player-three-name");
+        var p4_name_ele = document.getElementById("player-four-name");
+
+        localStorage.setItem("Players", totalPlayersNumber);
+        if (totalPlayersNumber == 2) {
+          if (p1_name_ele.value == "" || p2_name_ele.value == ""){
+            alert("Please Enter Players Names");
+            return false;
+          }
+
+          localStorage.setItem("P1", p1_name_ele.value);
+          localStorage.setItem("P2", p2_name_ele.value);
+
+        } else if (totalPlayersNumber == 3) {
+          if (p1_name_ele.value == "" || p2_name_ele.value == "" || p3_name_ele.value == ""){
+            alert("Please Enter Players Names");
+            return false;
+          }
+
+          localStorage.setItem("P1", p1_name_ele.value);
+          localStorage.setItem("P2", p2_name_ele.value);
+          localStorage.setItem("P3", p3_name_ele.value);
+
+        } else if (totalPlayersNumber == 4) {
+          if (p1_name_ele.value == "" || p2_name_ele.value == "" || p3_name_ele.value == "" || p4_name_ele.value == ""){
+            alert("Please Enter Players Names");
+            return false;
+          }
+          
+          localStorage.setItem("P1", p1_name_ele.value);
+          localStorage.setItem("P2", p2_name_ele.value);
+          localStorage.setItem("P3", p3_name_ele.value);
+          localStorage.setItem("P4", p4_name_ele.value);
+        } else if (totalPlayersNumber == 1) {
+          if (p1_name_ele.value == ""){
+            alert("Please Enter Players Names");
+            return false;
+          }
+
+          localStorage.setItem("P1", p1_name_ele.value);
+          localStorage.setItem("CPU", "John Cena");
+        } else {
+          alert("Please Select Players and Enter Players Names");
+          return false;
+        }
+
+        window.location.href = "game.html";
+      }
+
+      function selectPlayers(tPlayers) {
+        totalPlayersNumber = tPlayers;
+        var p1_box_ele = document.getElementById("one-player");
+        var p2_box_ele = document.getElementById("two-player");
+        var p3_box_ele = document.getElementById("three-player");
+        var p4_box_ele = document.getElementById("four-player");
+
+        var p1_name_ele = document.getElementById("player-one-name");
+        var p2_name_ele = document.getElementById("player-two-name");
+        var p3_name_ele = document.getElementById("player-three-name");
+        var p4_name_ele = document.getElementById("player-four-name");
+
+        p1_name_ele.value = "";
+        p2_name_ele.value = "";
+        p3_name_ele.value = "";
+        p4_name_ele.value = "";
+
+        if (tPlayers == 1) {
+          p1_box_ele.style.opacity = "0.75";
+          p2_box_ele.style.opacity = "0.2";
+          p3_box_ele.style.opacity = "0.2";
+          p4_box_ele.style.opacity = "0.2";
+
+          p1_name_ele.style.display = "block";
+          p2_name_ele.style.display = "none";
+          p3_name_ele.style.display = "none";
+          p4_name_ele.style.display = "none";
+        } else if (tPlayers == 2) {
+          p1_box_ele.style.opacity = "0.75";
+          p2_box_ele.style.opacity = "0.75";
+          p3_box_ele.style.opacity = "0.2";
+          p4_box_ele.style.opacity = "0.2";
+
+          p1_name_ele.style.display = "block";
+          p2_name_ele.style.display = "block";
+          p3_name_ele.style.display = "none";
+          p4_name_ele.style.display = "none";
+        } else if (tPlayers == 3) {
+          p1_box_ele.style.opacity = "0.75";
+          p2_box_ele.style.opacity = "0.75";
+          p3_box_ele.style.opacity = "0.75";
+          p4_box_ele.style.opacity = "0.2";
+
+          p1_name_ele.style.display = "block";
+          p2_name_ele.style.display = "block";
+          p3_name_ele.style.display = "block";
+          p4_name_ele.style.display = "none";
+        } else if (tPlayers == 4) {
+          p1_box_ele.style.opacity = "0.75";
+          p2_box_ele.style.opacity = "0.75";
+          p3_box_ele.style.opacity = "0.75";
+          p4_box_ele.style.opacity = "0.75";
+
+          p1_name_ele.style.display = "block";
+          p2_name_ele.style.display = "block";
+          p3_name_ele.style.display = "block";
+          p4_name_ele.style.display = "block";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <section class="game">
+      <div class="left-side">
+        <h1>Snaky</h1>
+        <h3>Ludo Snake Game</h3>
+      </div>
+      <div class="right-side">
+        <div class="box">
+          <div id="totalPlayersBoxes" class="d-flex justify-evenly my1">
+            <button
+              class="one-player"
+              id="one-player"
+              onclick="selectPlayers(1)"
+            >
+              1
+            </button>
+            <button
+              class="two-player"
+              id="two-player"
+              onclick="selectPlayers(2)"
+            >
+              2
+            </button>
+            <button
+              class="three-player"
+              id="three-player"
+              onclick="selectPlayers(3)"
+            >
+              3
+            </button>
+            <button
+              class="four-player"
+              id="four-player"
+              onclick="selectPlayers(4)"
+            >
+              4
+            </button>
+          </div>
+
+          <div class="players-info">
+            <input
+              type="text"
+              placeholder="Enter Player One Name"
+              id="player-one-name"
+            />
+            <input
+              type="text"
+              placeholder="Enter Player Two Name"
+              id="player-two-name"
+            />
+            <input
+              type="text"
+              placeholder="Enter Player Three Name"
+              id="player-three-name"
+            />
+            <input
+              type="text"
+              placeholder="Enter Player Four Name"
+              id="player-four-name"
+            />
+          </div>
+
+          <div id="game-start-btn">
+            <button id="start-btn" onclick="savePlayersInfo()">
+              Start Game
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="myjs.js"></script>
+  </body>
+</html>

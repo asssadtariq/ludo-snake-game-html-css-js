@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="game.css" />
+    <title>Snaky | Gameplay</title>
+
+    <script>
+      function goback() {
+        window.location.href = "index.html";
+      }
+
+      function setting() {
+        const modal = document.querySelector(".setting-modal");
+        modal.classList.remove("display-hidden");
+        var elem = document.getElementById("game-display");
+        elem.style.display = "none";
+
+        var level = localStorage.getItem("game_level");
+        changeDifficulty(level);
+      }
+
+      function closeModal() {
+        const modal = document.querySelector(".setting-modal");
+        modal.classList.add("display-hidden");
+        var elem = document.getElementById("game-display");
+        elem.style.display = "flex";
+      }
+
+      function changeDifficulty(level) {
+        level = parseInt(level);
+        localStorage.setItem("temp_game_level", level);
+        const easyBtn = document.getElementById("easy-btn");
+        const normalBtn = document.getElementById("normal-btn");
+        const hardBtn = document.getElementById("hard-btn");
+        const superHardBtn = document.getElementById("superHard-btn");
+
+        easyBtn.style.backgroundColor = "transparent";
+        normalBtn.style.backgroundColor = "transparent";
+        hardBtn.style.backgroundColor = "transparent";
+        superHardBtn.style.backgroundColor = "transparent";
+        switch (level) {
+          case 1:
+            easyBtn.style.backgroundColor = "springgreen";
+            break;
+          case 2:
+            normalBtn.style.backgroundColor = "#bfbf22";
+            break;
+          case 3:
+            hardBtn.style.backgroundColor = "orange";
+            break;
+          case 4:
+            superHardBtn.style.backgroundColor = "red";
+            break;
+        }
+      }
+
+      function saveChanges() {
+        localStorage.setItem(
+          "game_level",
+          parseInt(localStorage.getItem("temp_game_level"))
+        );
+        loadGame(false);
+        location.reload();
+        closeModal();
+      }
+
+      function restart() {
+        loadGame(false);
+        location.reload();
+      }
+    </script>
+
+    <script src="myjs.js"></script>
+  </head>
+
+  <body onload="loadGame()">
+    <img src="images\snake gif 3.gif" alt="" id="snake-gifs" />
+    <img src="images\lader gif.gif" alt="" id="lader-gifs" />
+    <p id="message"></p>
+
+    <div id="game_over">
+      <div id="restart-btn">
+        <button onclick="location.reload()">Restart</button>
+      </div>
+
+      <div class="result">
+        <table id="result-table" style="width: 60%">
+          <caption>
+            Players
+          </caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Snakes</th>
+              <th>Laders</th>
+              <th>Attempt</th>
+              <th>Position</th>
+            </tr>
+          </thead>
+          <tbody id="result-table-body"></tbody>
+        </table>
+      </div>
+
+      <div id="player-images">
+        <img src="images\pos1.gif" alt="" id="pos1-gifs" />
+        <img src="images\pos2.gif" alt="" id="pos2-gifs" />
+        <img src="images\pos3.gif" alt="" id="pos3-gifs" />
+        <img src="images\pos4.gif" alt="" id="pos4-gifs" />
+      </div>
+    </div>
+
+    <div class="setting-modal display-hidden">
+      <h1>Settings | Change Difficulty</h1>
+      <div class="difficulty-btn">
+        <button id="easy-btn" onclick="changeDifficulty(1)">Easy</button>
+        <button id="normal-btn" onclick="changeDifficulty(2)">Normal</button>
+        <button id="hard-btn" onclick="changeDifficulty(3)">Hard</button>
+        <button id="superHard-btn" onclick="changeDifficulty(4)">
+          Super Hard
+        </button>
+      </div>
+      <div id="modal-btns">
+        <button id="close-btn" onclick="closeModal()">Close</button>
+        <button id="save-btn" onclick="saveChanges()">Save</button>
+      </div>
+    </div>
+
+    <section id="game-display">
+      <div id="grid"></div>
+      <div id="players-info-dice">
+        <div id="goback-btn">
+          <button onclick="goback()">Back</button>
+          <button onclick="setting()">Settings</button>
+          <button onclick="restart()">restart</button>
+        </div>
+        <div class="players-info">
+          <table id="players-table">
+            <caption>
+              Players
+            </caption>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Snakes</th>
+                <th>Laders</th>
+                <th>Attempt</th>
+              </tr>
+            </thead>
+            <tbody id="players-table-body"></tbody>
+          </table>
+        </div>
+        <div class="dice">
+          <div class="dice-rolling-area">
+            <div id="dice">
+              <button id="dice-value">-</button>
+            </div>
+          </div>
+          <div class="dice-btn">
+            <button onclick="rollDice()" id="roll-dice-btn">Roll</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
